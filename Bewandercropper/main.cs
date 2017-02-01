@@ -5,18 +5,85 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace Bewandercropper
 {
     public partial class main : Form
     {
+        public class ReviewAPIViewModel
+        {
+            // Review Properties
+            public int ReviewID { get; set; }
+            public string UsersFullName { get; set; }
+            public string Title { get; set; }
+            public string Body { get; set; }
+            public int ResidentType { get; set; }
+            public int SubjectType { get; set; }
+            public int StarRating { get; set; }
+            public int CostRating { get; set; }
+            public string DatePosted { get; set; }
+            // Place Properties
+            public string PlaceName { get; set; }
+            public string Website { get; set; }
+
+            // Constructors
+            public ReviewAPIViewModel() { }
+
+            //Need to add a better constructor so that I don't need to do so much manual stuff in ReviewAPIController... But this works for now!
+        }
+
         //Filesystemwatcher instance.
         FileSystemWatcher watcher = new FileSystemWatcher();
 
+        public async void updateLatestReview()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync("http://localhost:50900/api/ReviewAPI/");
+
+                response.EnsureSuccessStatusCode();
+                string responseStr = await response.Content.ReadAsStringAsync();
+
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                ReviewAPIViewModel result = serializer.Deserialize<ReviewAPIViewModel>(responseStr);
+
+                reviewLabelDateTime.Text = result.DatePosted.ToString();
+                ReviewLabelLocation.Text = result.PlaceName.ToString();
+                ReviewLabelUserFullName.Text = result.UsersFullName.ToString();
+                ReviewLabelCost.Text = result.CostRating.ToString();
+                /*
+                using (var client = new WebClient())
+                {
+                    var json = client.DownloadString("http://localhost:50900/api/ReviewAPI/");
+
+                    HttpClient client = new HttpClient();
+
+                    
+
+                    reviewLabelDateTime.Text = result.DatePosted.ToString();
+                    ReviewLabelLocation.Text = result.PlaceName.ToString();
+                    ReviewLabelUserFullName.Text = result.UsersFullName.ToString();
+                    ReviewLabelCost.Text = result.CostRating.ToString();
+                }
+                */
+            }
+            /*catch (Exception e)
+            {
+                throw e;
+            }*/
+            finally {
+            }
+            
+        }
         public void watcher_start()
         {
             try
@@ -195,6 +262,8 @@ namespace Bewandercropper
         //Called when window is resized (such as minimized)
         private void main_Resize(object sender, EventArgs e)
         {
+            updateLatestReview();
+
             BewanderTrayIcon.BalloonTipTitle = "Notifcations";
             BewanderTrayIcon.BalloonTipText = "Bewander is running in the system tray!";
 

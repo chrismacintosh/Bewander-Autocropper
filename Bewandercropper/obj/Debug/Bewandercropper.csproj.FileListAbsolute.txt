@@ -7,3 +7,6 @@ c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercro
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.csproj.GenerateResource.Cache
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.exe
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.pdb
+C:\Users\Chris\Documents\Visual Studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.csprojResolveAssemblyReference.cache
+C:\Users\Chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Debug\Newtonsoft.Json.xml
