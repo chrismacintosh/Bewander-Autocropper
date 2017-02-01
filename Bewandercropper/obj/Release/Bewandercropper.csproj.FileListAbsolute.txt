@@ -1,0 +1,9 @@
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Release\Bewandercropper.exe.config
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Release\Bewandercropper.exe
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Release\Bewandercropper.pdb
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Release\Bewandercropper.firstrun.resources
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Release\Bewandercropper.main.resources
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Release\Bewandercropper.Properties.Resources.resources
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Release\Bewandercropper.csproj.GenerateResource.Cache
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Release\Bewandercropper.exe
+c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Release\Bewandercropper.pdb

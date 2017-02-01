@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
+            this.BewanderTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // buttonStart
@@ -53,6 +55,12 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
+            // BewanderTrayIcon
+            // 
+            this.BewanderTrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("BewanderTrayIcon.Icon")));
+            this.BewanderTrayIcon.Text = "Bewander Autocropper";
+            this.BewanderTrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.BewanderTrayIcon_MouseDoubleClick);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -66,6 +74,8 @@
             this.MinimumSize = new System.Drawing.Size(1250, 650);
             this.Name = "main";
             this.Text = "Bewander Cropper";
+            this.Load += new System.EventHandler(this.main_Load);
+            this.Resize += new System.EventHandler(this.main_Resize);
             this.ResumeLayout(false);
 
         }
@@ -74,6 +84,7 @@
 
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.NotifyIcon BewanderTrayIcon;
     }
 }
 
