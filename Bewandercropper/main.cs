@@ -76,10 +76,10 @@ namespace Bewandercropper
                 }
                 */
             }
-            /*catch (Exception e)
+            catch (HttpRequestException e)
             {
-                throw e;
-            }*/
+                toolStripStatusLabel.Text = "Failed to contact Bewander server.";
+            }
             finally {
             }
             
