@@ -21,9 +21,12 @@ namespace Bewandercropper
         {
             try
             {
+                toolStripStatusLabel.Text = "Checking configuration settings...";
+
                 //Check if config is valid... Cause we dun' like bugs round these neck o' da woods.
                 if (isConfigValid())
                 {
+                    toolStripStatusLabel.Text = "Settings are valid, setting up FileSystemWatcher.";
                     //Set FileSystemWatcher to watch the input directory
                     watcher.Path = Properties.Settings.Default.inputdirectory;
 
@@ -46,11 +49,13 @@ namespace Bewandercropper
             finally
             {
                 //Update notifications or logging here. Some sort of status indicator.
+                toolStripStatusLabel.Text = "Watching " + Properties.Settings.Default.inputdirectory + " for files";
             }
         }
 
         public void watcher_stop()
         {
+            toolStripStatusLabel.Text = "Stopping FileSystemWatcher...";
             try
             {
                 //Disable the filesystemwatcher.
@@ -59,6 +64,7 @@ namespace Bewandercropper
             finally
             {
                 //Logging. Status messages. Something.
+                toolStripStatusLabel.Text = "Stopped.";
             }
         }
         public bool isConfigValid()
@@ -92,8 +98,10 @@ namespace Bewandercropper
 
         public void handler_newfile(object source, FileSystemEventArgs e)
         {
+            toolStripStatusLabel.Text = "Received " + e.Name + "... Checking file type.";
             if (isFileTypeValid(e))
             {
+                toolStripStatusLabel.Text = "Filetype ok! Processing " +e.Name+"...";
                 //Declare
                 string destinationFile = Properties.Settings.Default.outputdirectory + "\\" + e.Name;
                 
@@ -109,9 +117,11 @@ namespace Bewandercropper
                 //Throwing (int) in front of width and height tells them to act as integers.
                 Rectangle cropArea = new Rectangle(0, 0, (int)width, (int)height);
 
+                toolStripStatusLabel.Text = "Cropping...";
                 //Make a new image from the above specs
                 Bitmap croppedImage = cropImage(target, cropArea);
-                
+                toolStripStatusLabel.Text = "Finished cropping!";
+
                 //Now that we're done with the target image object, let's get rid of it's resource usage.
                 target.Dispose();
 
@@ -126,6 +136,8 @@ namespace Bewandercropper
 
                 //Now we can dispose that instance too.
                 croppedImage.Dispose();
+
+                toolStripStatusLabel.Text = "Successfully processed " + e.Name + "!";
             }
         }
 
@@ -210,6 +222,7 @@ namespace Bewandercropper
         //Start button
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            watcher_start();
             //Enable stop button, since they just clicked the start button.
             buttonStop.Enabled = true;
             //Disable start button, since they just clicked it.
@@ -219,6 +232,7 @@ namespace Bewandercropper
         //Stop button
         private void buttonStop_Click(object sender, EventArgs e)
         {
+            watcher_stop();
             //Enable start button, since they just clicked the stop button.
             buttonStart.Enabled = true;
             //Disable stop button, since they just clicked it.

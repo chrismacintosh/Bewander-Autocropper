@@ -1,7 +1,6 @@
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Debug\Bewandercropper.exe.config
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Debug\Bewandercropper.exe
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\bin\Debug\Bewandercropper.pdb
-c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.csprojResolveAssemblyReference.cache
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.firstrun.resources
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.main.resources
 c:\users\chris\documents\visual studio 2015\Projects\Bewandercropper\Bewandercropper\obj\Debug\Bewandercropper.Properties.Resources.resources
