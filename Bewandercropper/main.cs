@@ -70,16 +70,14 @@ namespace Bewandercropper
                 HttpResponseMessage response = await client.GetAsync("http://localhost:50900/api/ReviewAPI/");
                 List<string> errors = new List<string>();
 
-                //response.Headers.
+                
                 response.EnsureSuccessStatusCode(); //This may or may not be irrelevant, since if the request fails the catch block will occur.
                 string responseStr =  response.Content.ReadAsStringAsync().Result;
-                //string responseStr = response.Content.ReadAsStringAsync();
+                
                 responseStr = responseStr
                                              .Replace("\\", "")
                                                .Trim(new char[1] { '"' });
-                //JavaScriptSerializer serializer = new JavaScriptSerializer();
-                //ReviewAPIViewModel result = serializer.Deserialize<ReviewAPIViewModel>(responseStr);
-
+                
                 ReviewAPIViewModel result = new ReviewAPIViewModel();
                 result = JsonConvert.DeserializeObject<ReviewAPIViewModel>(responseStr, new JsonSerializerSettings
                 {
@@ -90,36 +88,7 @@ namespace Bewandercropper
                     },
                     Converters = { new Newtonsoft.Json.Converters.IsoDateTimeConverter() }
                 });
-                /*
-                  1List<string> errors = new List<string>();
-     2
-     3List<DateTime> c = JsonConvert.DeserializeObject<List<DateTime>>(@"[
-     4      '2009-09-09T00:00:00Z',
-     5      'I am not a date and will error!',
-     6      [
-     7        1
-     8      ],
-     9      '1977-02-20T00:00:00Z',
-    10      null,
-    11      '2000-12-01T00:00:00Z'
-    12    ]",
-        new JsonSerializerSettings
-        {
-            Error = delegate(object sender, ErrorEventArgs args)
-            {
-                errors.Add(args.ErrorContext.Error.Message);
-                args.ErrorContext.Handled = true;
-            },
-            Converters = { new IsoDateTimeConverter() }
-        });
-    22
-    23// 2009-09-09T00:00:00Z
-    24// 1977-02-20T00:00:00Z
-    25// 2000-12-01T00:00:00Z
-    26
-    27// The string was not recognized as a valid DateTime. There is a unknown word starting at index 0.
-    28// Unexpected token parsing date. Expected String, got StartArray.
-    29// Cannot convert null value to System.DateTime.*/
+                
 
                 reviewLabelDateTime.Text = result.DatePosted.ToString();
                 ReviewLabelLocation.Text = result.PlaceName.ToString();
