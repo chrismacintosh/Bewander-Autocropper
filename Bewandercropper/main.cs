@@ -83,6 +83,7 @@ namespace Bewandercropper
                 {
                     Error = delegate (object sender, Newtonsoft.Json.Serialization.ErrorEventArgs args)
                     {
+                        //eror handling... because stuff happens!
                         errors.Add(args.ErrorContext.Error.Message);
                         args.ErrorContext.Handled = true;
                     },
@@ -90,9 +91,9 @@ namespace Bewandercropper
                 });
                 
 
-                reviewLabelDateTime.Text = result.DatePosted.ToString();
-                ReviewLabelLocation.Text = result.PlaceName.ToString();
-                ReviewLabelUserFullName.Text = result.UsersFullName.ToString();
+                ReviewLabelDatePosted.Text = result.DatePosted;
+                ReviewLabelLocation.Text = result.PlaceName;
+                ReviewLabelUserFullName.Text = result.UsersFullName;
                 ReviewLabelCost.Text = result.CostRating.ToString();
 
             }

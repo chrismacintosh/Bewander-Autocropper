@@ -39,7 +39,7 @@
             this.ReviewLabelCost = new System.Windows.Forms.Label();
             this.ReviewLabelUserFullName = new System.Windows.Forms.Label();
             this.ReviewLabelLocation = new System.Windows.Forms.Label();
-            this.reviewLabelDateTime = new System.Windows.Forms.Label();
+            this.ReviewLabelDatePosted = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -105,7 +105,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelCost);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelUserFullName);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelLocation);
-            this.splitContainer1.Panel1.Controls.Add(this.reviewLabelDateTime);
+            this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelDatePosted);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -148,12 +148,12 @@
             // 
             // reviewLabelDateTime
             // 
-            this.reviewLabelDateTime.AutoSize = true;
-            this.reviewLabelDateTime.Location = new System.Drawing.Point(103, 71);
-            this.reviewLabelDateTime.Name = "reviewLabelDateTime";
-            this.reviewLabelDateTime.Size = new System.Drawing.Size(53, 13);
-            this.reviewLabelDateTime.TabIndex = 5;
-            this.reviewLabelDateTime.Text = "DateTime";
+            this.ReviewLabelDatePosted.AutoSize = true;
+            this.ReviewLabelDatePosted.Location = new System.Drawing.Point(103, 71);
+            this.ReviewLabelDatePosted.Name = "reviewLabelDateTime";
+            this.ReviewLabelDatePosted.Size = new System.Drawing.Size(53, 13);
+            this.ReviewLabelDatePosted.TabIndex = 5;
+            this.ReviewLabelDatePosted.Text = "DateTime";
             // 
             // label5
             // 
@@ -241,7 +241,7 @@
         private System.Windows.Forms.Label ReviewLabelCost;
         private System.Windows.Forms.Label ReviewLabelUserFullName;
         private System.Windows.Forms.Label ReviewLabelLocation;
-        private System.Windows.Forms.Label reviewLabelDateTime;
+        private System.Windows.Forms.Label ReviewLabelDatePosted;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
