@@ -36,15 +36,15 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.reviewLabelDateTime = new System.Windows.Forms.Label();
-            this.ReviewLabelLocation = new System.Windows.Forms.Label();
-            this.ReviewLabelUserFullName = new System.Windows.Forms.Label();
             this.ReviewLabelCost = new System.Windows.Forms.Label();
+            this.ReviewLabelUserFullName = new System.Windows.Forms.Label();
+            this.ReviewLabelLocation = new System.Windows.Forms.Label();
+            this.reviewLabelDateTime = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -119,69 +119,14 @@
             this.splitContainer1.SplitterDistance = 411;
             this.splitContainer1.TabIndex = 3;
             // 
-            // label1
+            // ReviewLabelCost
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Vladimir Script", 30F);
-            this.label1.Location = new System.Drawing.Point(95, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 48);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Latest Review";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Posted: ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Where: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 98);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Who: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Cost: ";
-            // 
-            // reviewLabelDateTime
-            // 
-            this.reviewLabelDateTime.AutoSize = true;
-            this.reviewLabelDateTime.Location = new System.Drawing.Point(103, 71);
-            this.reviewLabelDateTime.Name = "reviewLabelDateTime";
-            this.reviewLabelDateTime.Size = new System.Drawing.Size(53, 13);
-            this.reviewLabelDateTime.TabIndex = 5;
-            this.reviewLabelDateTime.Text = "DateTime";
-            // 
-            // ReviewLabelLocation
-            // 
-            this.ReviewLabelLocation.AutoSize = true;
-            this.ReviewLabelLocation.Location = new System.Drawing.Point(103, 84);
-            this.ReviewLabelLocation.Name = "ReviewLabelLocation";
-            this.ReviewLabelLocation.Size = new System.Drawing.Size(62, 13);
-            this.ReviewLabelLocation.TabIndex = 6;
-            this.ReviewLabelLocation.Text = "PlaceName";
+            this.ReviewLabelCost.AutoSize = true;
+            this.ReviewLabelCost.Location = new System.Drawing.Point(106, 110);
+            this.ReviewLabelCost.Name = "ReviewLabelCost";
+            this.ReviewLabelCost.Size = new System.Drawing.Size(60, 13);
+            this.ReviewLabelCost.TabIndex = 8;
+            this.ReviewLabelCost.Text = "CostRange";
             // 
             // ReviewLabelUserFullName
             // 
@@ -192,14 +137,69 @@
             this.ReviewLabelUserFullName.TabIndex = 7;
             this.ReviewLabelUserFullName.Text = "UserFullName";
             // 
-            // ReviewLabelCost
+            // ReviewLabelLocation
             // 
-            this.ReviewLabelCost.AutoSize = true;
-            this.ReviewLabelCost.Location = new System.Drawing.Point(106, 110);
-            this.ReviewLabelCost.Name = "ReviewLabelCost";
-            this.ReviewLabelCost.Size = new System.Drawing.Size(60, 13);
-            this.ReviewLabelCost.TabIndex = 8;
-            this.ReviewLabelCost.Text = "CostRange";
+            this.ReviewLabelLocation.AutoSize = true;
+            this.ReviewLabelLocation.Location = new System.Drawing.Point(103, 84);
+            this.ReviewLabelLocation.Name = "ReviewLabelLocation";
+            this.ReviewLabelLocation.Size = new System.Drawing.Size(62, 13);
+            this.ReviewLabelLocation.TabIndex = 6;
+            this.ReviewLabelLocation.Text = "PlaceName";
+            // 
+            // reviewLabelDateTime
+            // 
+            this.reviewLabelDateTime.AutoSize = true;
+            this.reviewLabelDateTime.Location = new System.Drawing.Point(103, 71);
+            this.reviewLabelDateTime.Name = "reviewLabelDateTime";
+            this.reviewLabelDateTime.Size = new System.Drawing.Size(53, 13);
+            this.reviewLabelDateTime.TabIndex = 5;
+            this.reviewLabelDateTime.Text = "DateTime";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(37, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Cost: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Who: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Where: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(37, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Posted: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Vladimir Script", 30F);
+            this.label1.Location = new System.Drawing.Point(95, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(212, 48);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Latest Review";
             // 
             // main
             // 

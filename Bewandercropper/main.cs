@@ -14,13 +14,38 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using System.Net.Http;
 
+
 namespace Bewandercropper
 {
     public partial class main : Form
     {
+        //public class ReviewAPIViewModel
+        //{
+        //    // Review Properties
+        //    public int ReviewID { get; set; }
+        //    public string UsersFullName { get; set; }
+        //    public string Title { get; set; }
+        //    public string Body { get; set; }
+        //    public int ResidentType { get; set; }
+        //    public int SubjectType { get; set; }
+        //    public int StarRating { get; set; }
+        //    public int CostRating { get; set; }
+        //    public DateTime DatePosted { get; set; }
+        //    // Place Properties
+        //    public string PlaceName { get; set; }
+        //    public string Website { get; set; }
+
+        //    // Constructors
+        //    public ReviewAPIViewModel() { }
+
+        //    //Need to add a better constructor so that I don't need to do so much manual stuff in ReviewAPIController... But this works for now!
+        //}
+
+        //Filesystemwatcher instance.
+        FileSystemWatcher watcher = new FileSystemWatcher();
+
         public class ReviewAPIViewModel
         {
-            // Review Properties
             public int ReviewID { get; set; }
             public string UsersFullName { get; set; }
             public string Title { get; set; }
@@ -30,59 +55,89 @@ namespace Bewandercropper
             public int StarRating { get; set; }
             public int CostRating { get; set; }
             public string DatePosted { get; set; }
-            // Place Properties
             public string PlaceName { get; set; }
             public string Website { get; set; }
 
-            // Constructors
-            public ReviewAPIViewModel() { }
 
-            //Need to add a better constructor so that I don't need to do so much manual stuff in ReviewAPIController... But this works for now!
         }
-
-        //Filesystemwatcher instance.
-        FileSystemWatcher watcher = new FileSystemWatcher();
 
         public async void updateLatestReview()
         {
             try
             {
+                
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = await client.GetAsync("http://localhost:50900/api/ReviewAPI/");
+                List<string> errors = new List<string>();
 
-                response.EnsureSuccessStatusCode();
-                string responseStr = await response.Content.ReadAsStringAsync();
+                //response.Headers.
+                response.EnsureSuccessStatusCode(); //This may or may not be irrelevant, since if the request fails the catch block will occur.
+                string responseStr =  response.Content.ReadAsStringAsync().Result;
+                //string responseStr = response.Content.ReadAsStringAsync();
+                responseStr = responseStr
+                                             .Replace("\\", "")
+                                               .Trim(new char[1] { '"' });
+                //JavaScriptSerializer serializer = new JavaScriptSerializer();
+                //ReviewAPIViewModel result = serializer.Deserialize<ReviewAPIViewModel>(responseStr);
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                ReviewAPIViewModel result = serializer.Deserialize<ReviewAPIViewModel>(responseStr);
+                ReviewAPIViewModel result = new ReviewAPIViewModel();
+                result = JsonConvert.DeserializeObject<ReviewAPIViewModel>(responseStr, new JsonSerializerSettings
+                {
+                    Error = delegate (object sender, Newtonsoft.Json.Serialization.ErrorEventArgs args)
+                    {
+                        errors.Add(args.ErrorContext.Error.Message);
+                        args.ErrorContext.Handled = true;
+                    },
+                    Converters = { new Newtonsoft.Json.Converters.IsoDateTimeConverter() }
+                });
+                /*
+                  1List<string> errors = new List<string>();
+     2
+     3List<DateTime> c = JsonConvert.DeserializeObject<List<DateTime>>(@"[
+     4      '2009-09-09T00:00:00Z',
+     5      'I am not a date and will error!',
+     6      [
+     7        1
+     8      ],
+     9      '1977-02-20T00:00:00Z',
+    10      null,
+    11      '2000-12-01T00:00:00Z'
+    12    ]",
+        new JsonSerializerSettings
+        {
+            Error = delegate(object sender, ErrorEventArgs args)
+            {
+                errors.Add(args.ErrorContext.Error.Message);
+                args.ErrorContext.Handled = true;
+            },
+            Converters = { new IsoDateTimeConverter() }
+        });
+    22
+    23// 2009-09-09T00:00:00Z
+    24// 1977-02-20T00:00:00Z
+    25// 2000-12-01T00:00:00Z
+    26
+    27// The string was not recognized as a valid DateTime. There is a unknown word starting at index 0.
+    28// Unexpected token parsing date. Expected String, got StartArray.
+    29// Cannot convert null value to System.DateTime.*/
 
                 reviewLabelDateTime.Text = result.DatePosted.ToString();
                 ReviewLabelLocation.Text = result.PlaceName.ToString();
                 ReviewLabelUserFullName.Text = result.UsersFullName.ToString();
                 ReviewLabelCost.Text = result.CostRating.ToString();
-                /*
-                using (var client = new WebClient())
-                {
-                    var json = client.DownloadString("http://localhost:50900/api/ReviewAPI/");
 
-                    HttpClient client = new HttpClient();
-
-                    
-
-                    reviewLabelDateTime.Text = result.DatePosted.ToString();
-                    ReviewLabelLocation.Text = result.PlaceName.ToString();
-                    ReviewLabelUserFullName.Text = result.UsersFullName.ToString();
-                    ReviewLabelCost.Text = result.CostRating.ToString();
-                }
-                */
             }
+            //This exception will occur if line 51 fails (if the server cannot be contacted).
+            //Instead of crashing the app, just display in the status bar what happened.
             catch (HttpRequestException e)
             {
                 toolStripStatusLabel.Text = "Failed to contact Bewander server.";
             }
-            finally {
+            finally
+            {
+
             }
-            
+
         }
         public void watcher_start()
         {
@@ -151,14 +206,19 @@ namespace Bewandercropper
                     //Delete
                     File.Delete(fullPathin);
                     File.Delete(fullPathout);
-                    //Dispose
-                    image.Dispose();
+
                     //Return true, since no exceptions were thrown.
                     return true;
                 }
-                catch
+                catch (Exception e)
                 {
+                    toolStripStatusLabel.Text = "Failed to validate configuration settings! Check folder read/write permissions." + e.Message;
                     return false;
+                }
+                finally
+                {
+                    //Dispose
+                    image.Dispose();
                 }
             }
         }
@@ -168,10 +228,10 @@ namespace Bewandercropper
             toolStripStatusLabel.Text = "Received " + e.Name + "... Checking file type.";
             if (isFileTypeValid(e))
             {
-                toolStripStatusLabel.Text = "Filetype ok! Processing " +e.Name+"...";
+                toolStripStatusLabel.Text = "Filetype ok! Processing " + e.Name + "...";
                 //Declare
                 string destinationFile = Properties.Settings.Default.outputdirectory + "\\" + e.Name;
-                
+
                 //Copy the untouched, original photo to the destination directory.
                 File.Copy(e.FullPath, destinationFile);
 
@@ -219,7 +279,7 @@ namespace Bewandercropper
             string fileExtension = Path.GetExtension(e.FullPath);
 
             //Check file types, and make sure this photo hasn't been cropped already.
-            if(Regex.IsMatch(fileExtension,@"\.jpeg|\.gif|\.png|\.jpg") && !Regex.IsMatch(e.Name, @"Cropped"))
+            if (Regex.IsMatch(fileExtension, @"\.jpeg|\.gif|\.png|\.jpg") && !Regex.IsMatch(e.Name, @"Cropped"))
             {
                 return true;
             }
