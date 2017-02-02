@@ -19,28 +19,6 @@ namespace Bewandercropper
 {
     public partial class main : Form
     {
-        //public class ReviewAPIViewModel
-        //{
-        //    // Review Properties
-        //    public int ReviewID { get; set; }
-        //    public string UsersFullName { get; set; }
-        //    public string Title { get; set; }
-        //    public string Body { get; set; }
-        //    public int ResidentType { get; set; }
-        //    public int SubjectType { get; set; }
-        //    public int StarRating { get; set; }
-        //    public int CostRating { get; set; }
-        //    public DateTime DatePosted { get; set; }
-        //    // Place Properties
-        //    public string PlaceName { get; set; }
-        //    public string Website { get; set; }
-
-        //    // Constructors
-        //    public ReviewAPIViewModel() { }
-
-        //    //Need to add a better constructor so that I don't need to do so much manual stuff in ReviewAPIController... But this works for now!
-        //}
-
         //Filesystemwatcher instance.
         FileSystemWatcher watcher = new FileSystemWatcher();
 
@@ -73,6 +51,7 @@ namespace Bewandercropper
                 
                 response.EnsureSuccessStatusCode(); //This may or may not be irrelevant, since if the request fails the catch block will occur.
                 string responseStr =  response.Content.ReadAsStringAsync().Result;
+                //This is 100% necessary due to how IHTTPActionResult returns our HttpResponseMessage with extra's
                 
                 responseStr = responseStr
                                              .Replace("\\", "")
