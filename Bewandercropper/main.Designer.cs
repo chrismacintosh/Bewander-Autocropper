@@ -40,11 +40,8 @@
             this.ReviewLabelUserFullName = new System.Windows.Forms.Label();
             this.ReviewLabelLocation = new System.Windows.Forms.Label();
             this.ReviewLabelDatePosted = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ReviewLabelStars = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -102,14 +99,11 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelStars);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelCost);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelUserFullName);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelLocation);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelDatePosted);
-            this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
@@ -146,50 +140,14 @@
             this.ReviewLabelLocation.TabIndex = 6;
             this.ReviewLabelLocation.Text = "PlaceName";
             // 
-            // reviewLabelDateTime
+            // ReviewLabelDatePosted
             // 
             this.ReviewLabelDatePosted.AutoSize = true;
-            this.ReviewLabelDatePosted.Location = new System.Drawing.Point(103, 71);
-            this.ReviewLabelDatePosted.Name = "reviewLabelDateTime";
+            this.ReviewLabelDatePosted.Location = new System.Drawing.Point(106, 123);
+            this.ReviewLabelDatePosted.Name = "ReviewLabelDatePosted";
             this.ReviewLabelDatePosted.Size = new System.Drawing.Size(53, 13);
             this.ReviewLabelDatePosted.TabIndex = 5;
             this.ReviewLabelDatePosted.Text = "DateTime";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Cost: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 98);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Who: ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Where: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Posted: ";
             // 
             // label1
             // 
@@ -200,6 +158,16 @@
             this.label1.Size = new System.Drawing.Size(212, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Latest Review";
+            // 
+            // ReviewLabelStars
+            // 
+            this.ReviewLabelStars.AutoSize = true;
+            this.ReviewLabelStars.Location = new System.Drawing.Point(109, 140);
+            this.ReviewLabelStars.Name = "ReviewLabelStars";
+            this.ReviewLabelStars.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ReviewLabelStars.Size = new System.Drawing.Size(31, 13);
+            this.ReviewLabelStars.TabIndex = 9;
+            this.ReviewLabelStars.Text = "Stars";
             // 
             // main
             // 
@@ -242,10 +210,7 @@
         private System.Windows.Forms.Label ReviewLabelUserFullName;
         private System.Windows.Forms.Label ReviewLabelLocation;
         private System.Windows.Forms.Label ReviewLabelDatePosted;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label ReviewLabelStars;
     }
 }
 
