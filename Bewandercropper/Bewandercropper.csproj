@@ -115,20 +115,18 @@
     <None Include="resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\goldstar-1.png" />
-    <Content Include="resources\goldstar-1half.png" />
-    <Content Include="resources\goldstar-2.png" />
-    <Content Include="resources\goldstar-2half.png" />
-    <Content Include="resources\goldstar-3.png" />
-    <Content Include="resources\goldstar-3half.png" />
-    <Content Include="resources\goldstar-4.png" />
-    <Content Include="resources\goldstar-4half.png" />
-    <Content Include="resources\goldstar-5.png" />
-    <Content Include="resources\goldstar-half.png" />
+    <Content Include="resources\stars\goldstar-1.png" />
+    <Content Include="resources\stars\goldstar-1half.png" />
+    <Content Include="resources\stars\goldstar-2.png" />
+    <Content Include="resources\stars\goldstar-2half.png" />
+    <Content Include="resources\stars\goldstar-3.png" />
+    <Content Include="resources\stars\goldstar-3half.png" />
+    <Content Include="resources\stars\goldstar-4.png" />
+    <Content Include="resources\stars\goldstar-4half.png" />
+    <Content Include="resources\stars\goldstar-5.png" />
+    <Content Include="resources\stars\goldstar-half.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="resources\stars\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

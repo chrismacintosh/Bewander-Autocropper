@@ -36,6 +36,9 @@ namespace Bewandercropper
             public string PlaceName { get; set; }
             public string Website { get; set; }
 
+            //Image object... for later. Not sure how I'll handle this.
+            //public Image profilepic { get; set; }
+
 
         }
 
@@ -43,9 +46,8 @@ namespace Bewandercropper
         {
             try
             {
-                
                 HttpClient client = new HttpClient();
-                HttpResponseMessage response = await client.GetAsync("http://localhost:50900/api/ReviewAPI/");
+                HttpResponseMessage response = await client.GetAsync("http://bewander.com/api/ReviewAPI/");
                 List<string> errors = new List<string>();
 
                 
@@ -68,12 +70,48 @@ namespace Bewandercropper
                     },
                     Converters = { new Newtonsoft.Json.Converters.IsoDateTimeConverter() }
                 });
-                
 
                 ReviewLabelDatePosted.Text = result.DatePosted;
                 ReviewLabelLocation.Text = result.PlaceName;
                 ReviewLabelUserFullName.Text = result.UsersFullName;
                 ReviewLabelCost.Text = result.CostRating.ToString();
+                ReviewLabelBody.Text = result.Body.ToString();
+                ReviewLabelTitle.Text = result.Title.ToString();
+                ReviewLabelHyperlink.Tag = result.Website.ToString();
+
+                //Set hyperlink to unviewed
+                ReviewLabelHyperlink.LinkVisited = false;
+
+                //userimage.Image = new Bitmap(result.profilepic);
+
+                result.StarRating = result.StarRating / 2; //Stars are actually 0-10... Did NOT even notice that when I wrote this.
+                //This is fun. I need to learn a more efficient way to do this...
+                if(result.StarRating == 1)
+                {
+                    var image = new Bitmap(Properties.Resources.goldstar_1);
+                    ReviewLabelStars.Image = image;
+                }
+                else if(result.StarRating == 2)
+                {
+                    var image = new Bitmap(Properties.Resources.goldstar_2);
+                    ReviewLabelStars.Image = image;
+                }
+                else if(result.StarRating == 3)
+                {
+                    var image = new Bitmap(Properties.Resources.goldstar_3);
+                    ReviewLabelStars.Image = image;
+                }
+                else if(result.StarRating == 4)
+                {
+                    var image = new Bitmap(Properties.Resources.goldstar_4);
+                    ReviewLabelStars.Image = image;
+                }
+                else if(result.StarRating == 5)
+                {
+                    var image = new Bitmap(Properties.Resources.goldstar_5);
+                    ReviewLabelStars.Image = image;
+                }
+
 
             }
             //This exception will occur if line 51 fails (if the server cannot be contacted).
@@ -84,7 +122,7 @@ namespace Bewandercropper
             }
             finally
             {
-
+                
             }
 
         }
@@ -265,6 +303,7 @@ namespace Bewandercropper
                 {
                     BewanderTrayIcon.Visible = false;
                 }
+                updateLatestReview();
             }
         }
 
@@ -328,6 +367,13 @@ namespace Bewandercropper
             this.ShowInTaskbar = true;
             //Remove system tray icon
             BewanderTrayIcon.Visible = false;
+        }
+
+        private void ReviewLabelHyperlink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.ReviewLabelHyperlink.LinkVisited = true;
+
+            System.Diagnostics.Process.Start(ReviewLabelHyperlink.Tag.ToString());
         }
     }
 }
