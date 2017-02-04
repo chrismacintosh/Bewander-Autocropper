@@ -37,9 +37,7 @@ namespace Bewandercropper
             public string Website { get; set; }
 
             //Image object... for later. Not sure how I'll handle this.
-            //public Image profilepic { get; set; }
-
-
+            public Image profilepic { get; set; }
         }
 
         public async void updateLatestReview()
@@ -47,7 +45,7 @@ namespace Bewandercropper
             try
             {
                 HttpClient client = new HttpClient();
-                HttpResponseMessage response = await client.GetAsync("http://bewander.com/api/ReviewAPI/");
+                HttpResponseMessage response = await client.GetAsync("http://bewander.com/api/ReviewAPI/newestreview");
                 List<string> errors = new List<string>();
 
                 
@@ -111,8 +109,6 @@ namespace Bewandercropper
                     var image = new Bitmap(Properties.Resources.goldstar_5);
                     ReviewLabelStars.Image = image;
                 }
-
-
             }
             //This exception will occur if line 51 fails (if the server cannot be contacted).
             //Instead of crashing the app, just display in the status bar what happened.
@@ -122,10 +118,15 @@ namespace Bewandercropper
             }
             finally
             {
-                
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync("http://bewander.com/api/ReviewAPI/newestreviewphoto");
+                //This is the section of code I'm working on as of 2/3/2017 7:16 PM... Still isn't load an image like I'd like to be. :"(
+                Image x = (Bitmap)((new ImageConverter()).ConvertFrom(response.Content.ReadAsByteArrayAsync()));
+                ReviewLabelUserPhoto.Image = x;
             }
 
         }
+     
         public void watcher_start()
         {
             try

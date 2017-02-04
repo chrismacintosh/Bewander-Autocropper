@@ -45,6 +45,7 @@
             this.ReviewLabelDatePosted = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ReviewLabelHyperlink = new System.Windows.Forms.LinkLabel();
+            this.ReviewLabelUserPhoto = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -102,6 +103,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelUserPhoto);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelHyperlink);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelBody);
             this.splitContainer1.Panel1.Controls.Add(this.ReviewLabelTitle);
@@ -205,6 +207,17 @@
             this.ReviewLabelHyperlink.Text = "Other reviews for this location (click here to view)";
             this.ReviewLabelHyperlink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ReviewLabelHyperlink_LinkClicked);
             // 
+            // ReviewLabelUserPhoto
+            // 
+            this.ReviewLabelUserPhoto.AutoSize = true;
+            this.ReviewLabelUserPhoto.Location = new System.Drawing.Point(245, 71);
+            this.ReviewLabelUserPhoto.MaximumSize = new System.Drawing.Size(150, 150);
+            this.ReviewLabelUserPhoto.MinimumSize = new System.Drawing.Size(150, 150);
+            this.ReviewLabelUserPhoto.Name = "ReviewLabelUserPhoto";
+            this.ReviewLabelUserPhoto.Size = new System.Drawing.Size(150, 150);
+            this.ReviewLabelUserPhoto.TabIndex = 13;
+            this.ReviewLabelUserPhoto.Text = "User Profile Photo";
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,6 +263,7 @@
         private System.Windows.Forms.Label ReviewLabelBody;
         private System.Windows.Forms.Label ReviewLabelTitle;
         private System.Windows.Forms.LinkLabel ReviewLabelHyperlink;
+        private System.Windows.Forms.Label ReviewLabelUserPhoto;
     }
 }
 
